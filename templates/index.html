@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Yield Prediction</title>
+
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 400px;
+    padding: 30px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+}
+
+button {
+    width: 95%;
+    padding: 12px;
+    background-color: #1B5E20;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #388E3C;
+    transform: scale(1.05);
+}
+
+.result {
+    margin-top: 20px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    font-weight: bold;
+    color: green;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🌾 Crop Yield Prediction</h2>
+
+<form action="/predict" method="post">
+
+<input type="text" name="state" placeholder="Enter State" required>
+
+<input type="text" name="crop" placeholder="Enter Crop" required>
+
+<input type="number" step="any" name="area" placeholder="Enter Area (Hectare)" required>
+
+<input type="text" name="city" placeholder="Enter City (Live Weather)" required>
+
+<button type="submit">Predict Yield</button>
+
+</form>
+
+{% if prediction_text %}
+<div class="result">
+{{prediction_text}}
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>
